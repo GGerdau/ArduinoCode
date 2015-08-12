@@ -1,0 +1,66 @@
+// the setup() method runs once, when the sketch starts
+
+void setup() {
+  // initialize the digital pin as an output.
+  pinMode(0, OUTPUT);
+    pinMode(1, OUTPUT);
+
+    //FOR BLINKER
+
+    pinMode(13, OUTPUT);
+}
+
+// the loop() methor runs over and over again,
+// as long as the board has power
+
+void loop() {               
+ /** digitalWrite(0, HIGH);   // set the LED on
+  delay(100);                  // wait for a second
+    digitalWrite(1, HIGH);   // set the LED on
+    digitalWrite(0,LOW);
+  delay(100);                  // wait for a second
+  digitalWrite(1,HIGH);
+  digitalWrite(0,HIGH);
+  delay(100);
+  digitalWrite(0,LOW);
+  digitalWrite(1,LOW);
+  delay(100);
+  */
+  for (int Brightness = 1000; Brightness>0;Brightness--){
+ shortColor(0,Brightness+10);
+ delay(1);
+ shortColor(1,(1000-Brightness)-10);
+ delay(1);
+  }
+    for (int Brightness = 1000; Brightness>0;Brightness--){
+ shortColor(1,Brightness-10);
+ delay(1);
+ shortColor(0,(1000-Brightness)+10);
+ delay(1);
+  }
+
+  
+}
+  //BLINKER
+  /**
+  digitalWrite(13,HIGH);
+  delay(1000);
+  digitalWrite(13,LOW);
+  delay(1000);
+  */
+
+void shortColor(int numberLed, int strength) {
+  int timeForOff = 1000-strength;
+  int timeOn = strength;
+  int writeIO = numberLed;
+  int numberInHundred = (int)(1000/strength);
+    digitalWrite(numberLed,LOW);
+  digitalWrite(numberLed,LOW);
+  for (int numberOfFlashes = 0; numberOfFlashes< numberInHundred; numberOfFlashes++ ){
+    digitalWrite(numberLed,HIGH);
+  for (int time =0; time <1000/numberInHundred; time ++){
+    digitalWrite(numberLed,LOW);
+  
+  }
+  }
+}
